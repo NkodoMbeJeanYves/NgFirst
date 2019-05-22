@@ -1,0 +1,107 @@
+<div class="row mt-3 ml-0">
+  <div class="col-sm-6 col-sm-offset-2 mb-5">
+    <div class="card">
+      <div class="card-header">
+          <h3>New Book</h3>
+      </div>
+      <div class="card-body">
+        <form class="form-group" (ngSubmit)="add(myForm)" #myForm="ngForm">
+          <div class="row">
+            <label for="title">Book's title</label>
+            <input id="title" required minlength="4" appForbiddenName="Marvel" 
+            class="form-control" type="text" #ref_loc_Title="ngModel" name="title" placeholder="Type books title here"  ngModel>
+          </div>
+          <!-- Debut gestion erreur formulaire -->
+          <div *ngIf="ref_loc_Title.invalid && (ref_loc_Title.dirty || ref_loc_Title.touched)" class="alert alert-danger">
+              <div *ngIf="ref_loc_Title.errors.required">
+                Book's title is required.
+              </div>
+              <div *ngIf="ref_loc_Title.errors.minlength">
+                Book's title must be at least 4 characters long.
+              </div>
+              <div *ngIf="ref_loc_Title.errors.forbiddenName">
+                title cannot be Marvel End Game.
+              </div>
+          </div>
+
+          <div class="row">
+            <label for="title">Book's Author</label>
+            <input id="author" required  minlength="5"
+            class="form-control" type="text" #ref_loc_author="ngModel" name="author" placeholder="Type book author here"  ngModel>
+          </div>
+          <!-- Debut gestion erreur formulaire -->
+          <div *ngIf="ref_loc_author.invalid && (ref_loc_author.dirty || ref_loc_author.touched)" class="alert alert-danger">
+            <div *ngIf="ref_loc_author.errors.required">
+              Book's Author is required.
+            </div>
+            <div *ngIf="ref_loc_author.errors.minlength">
+              Vous devez definir un nom d'auteur d'au-moins 5 caractères.
+            </div>
+          </div>
+
+
+          <div class="row">
+              <label for="title">Book's Picture</label>
+            <input id="photo" class="form-control" required type="file" #upload="ngModel" [disabled]="ref_loc_Title.invalid || ref_loc_author.invalid" name="photo" ngModel accept="image/*" (change)="selectFile($event)" >
+          </div>
+          <!-- Debut gestion erreur formulaire -->
+          <div *ngIf="upload.invalid && (upload.dirty || upload.touched)" class="alert alert-danger">
+            <div *ngIf="upload.errors.required">
+              La photo du livre est necessaire.
+            </div>
+          </div>
+          
+          
+            
+        
+
+          
+          
+          
+          
+          <div class="row">
+            <div class="col-lg-6">
+              <button class="btn btn-primary form-control mt-3 " type="submit" [disabled]="myForm.invalid"> Create this book!</button>
+            </div>  
+          </div>
+        </form> 
+      </div>
+    </div>
+  </div>  
+
+
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+          <h3>Info</h3>
+      </div>
+      <div class="card-body">
+        <div *ngIf="this.inProgress">
+          <div class="progress-bar progress-bar-danger " style="height: 20px; margin-bottom:20px;">
+            <div class="progress-bar" role="progressbar"
+            aria-valuemin="0" aria-valuemax="100" [style.width.%]="this.progress">
+            {{ this.progress }}
+            </div>
+          </div>
+        </div>
+        <p>Upload Progress : {{ progress }} %</p>
+<!--
+        <div class="row" *ngFor="let rg of rang; let i = index">
+          <label for="title">checkboxes {{ rg }}</label>
+        <input id="choice{{i}}" class="form-control" type="checkbox" name="{{i}}" ngModel (change)="getIt(i+1)">
+        </div>
+-->
+      </div>
+      <div class="card-footer">
+        footer
+      </div>
+    </div>
+  </div> 
+
+
+
+
+</div>  
+
+<app-book-list></app-book-list>

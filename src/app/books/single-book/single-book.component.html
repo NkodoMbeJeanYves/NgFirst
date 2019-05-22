@@ -1,0 +1,60 @@
+<div class="row">
+      <h2>Single Book</h2>
+    
+    <div class="row">
+
+      <div id="accordion" class="col-lg-6 mt-5">
+        <div class="card">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" routerLink="#collapseOne">
+              Single Book Viewer # {{ this.ind }}
+            </a>
+          </div>
+          <div id="collapseOne" class="collapse show" data-parent="#accordion">
+            <div class="card-body">
+                <div class="row">
+                    <img src="{{this.photo}}" class="img-fluid rounded" alt="Responsive image">
+                </div>
+                <div class="form-group">
+                    Title : <h5>{{ this.title }}</h5>
+                    Author : <h6>{{ this.author }}</h6>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <div class="col-lg-6 mt-5">
+          <div class="card">
+            <div class="card-header">
+                <h3>Fill the form for updating that Book</h3>
+            </div>
+            <div class="card-body">
+              <form class="form-group" (ngSubmit)="updateBook(updForm)" #updForm="ngForm">
+                <div class="row">
+                  <label for="title">Book's title</label>
+                  <input class="form-control" type="text" name="title" placeholder="Type book's title here" ngModel>
+                </div>
+                <div class="row">
+                  <label for="title">Book's Author</label>
+                  <input class="form-control" type="text" name="author" placeholder="Type book's author here" ngModel>
+                </div>
+                <div class="row">
+                    <label for="title">Book's Picture</label>
+                  <input class="form-control" type="file" name="photo" ngModel (change)="selectFile($event)">
+                </div>
+                <div class="row">
+                  <div class="col-*">
+                    <button class="btn btn-primary form-control mt-3 " type="submit" > Update this book!</button>
+                  </div>  
+                </div>
+              </form> 
+            </div>
+          </div>
+        </div>  
+    </div>
+  </div>  
+  
+  
+  
+  

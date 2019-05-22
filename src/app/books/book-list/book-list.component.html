@@ -1,0 +1,39 @@
+<h2>Book's List </h2>
+<div class="row float-right">
+    <input id="search-box" style="width:300px; height: 50px; padding-left: 5%" class="search" name="search-box" placeholder="Search By Title or Author" value="" #key="ngModel" (input)="onInput(key)" ngModel>
+</div>
+
+
+<div class="row">
+  <div id="accordion" class="col-md-3 mt-5" *ngFor="let book of books; let i = index">
+    <div id="{{ book.id }}" class="card">
+      <div class="card-header">
+        <a class="card-link" data-toggle="collapse" routerLink="/book/show/{{ book.id }}">
+          Book #{{ book.id }}
+        </a>
+      </div>
+      
+        <div class="card-body">
+            <div class="form-group">
+              Title : <h5>{{ book.title }}</h5>
+              Author : <h6>{{ book.author }}</h6>
+              <div class="row">
+                <a class="card-link" data-toggle="collapse" routerLink="/book/show/{{ book.id }}">
+                  <img [src]="book.photo"  class="img-fluid rounded" alt="Responsive image">
+                </a>  
+              </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <i class="material-icons float-right"><a class="card-link" data-toggle="collapse" (click)="deleteMe(book.id)">delete_sweep</a></i>      
+        </div>
+      
+    </div>
+  </div>
+</div>
+ 
+
+
+
+
+

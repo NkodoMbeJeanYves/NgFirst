@@ -1,0 +1,22 @@
+<div class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="nav navbar-nav navbar-left">
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="books">Books </a>
+    </li>
+    <li routerLinkActive="active" class="nav-item">
+        <a routerLink="/book/add" class="nav-link">Add New Book</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right float-right">
+    <li routerLinkActive="active">
+      <a routerLink="auth/signup" class="nav-link">Créer un compte</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="auth/signin" (click)="AutoConnectMe()" class="nav-link">Connexion</a>
+    </li>
+  </ul>
+</div>
+
+
+
+
